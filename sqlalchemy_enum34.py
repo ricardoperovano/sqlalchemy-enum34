@@ -10,7 +10,9 @@ from sqlalchemy.types import Enum as BaseEnum, SchemaType, TypeDecorator
 __all__ = 'Enum', 'EnumType'
 __version__ = '2.0.0'
 
-_sqlalchemy_version = tuple(map(int, sqlalchemy.__version__.split('.')))
+_version_numbers = [v for v in sqlalchemy.__version__.split('.') if v.isnumeric()]
+
+_sqlalchemy_version = tuple(map(int, _version_numbers))
 
 
 class Enum(TypeDecorator, SchemaType):
